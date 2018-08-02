@@ -1,28 +1,84 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <app-popup :export_data="data"
+             :export_select="select"
+             :export_tts="tts"
+             @srctarget="srctarget"
+             @translate="translate" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import popup from './popup.vue'
+
+// testing purpose
+import sample_data from './sample/sample_data'
+import sample_languages from './sample/sample_languages'
+const sample_tts_url = 'http://www.jingle.org/westwood8.mp3'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+    name: 'Test',
+    components: {
+        appPopup: popup,
+    },
+    data() {
+        return {
+            data: null,
+            select: null,
+            tts: {},
+        }
+    },
+    created() {
+        // testing purpose
+        setTimeout(() => {
+            this.select = {
+                src: 'auto',
+                target: 'en',
+
+                srcs: sample_languages.sl,
+                targets: sample_languages.tl,
+            }
+        }, 500)
+    },
+    methods: {
+        translate(input) {
+            console.log('translate:', input)
+
+            // cache target
+            const target = this.select.target
+
+            // testing purpose
+            setTimeout(() => {
+                // translate
+                this.data = JSON.parse(JSON.stringify(sample_data))
+
+                // set data src and target
+                if (!this.data.hasOwnProperty('src')) {
+                    this.data.src = this.select.src
+                }
+                if (!this.data.hasOwnProperty('target')) {
+                    this.data.target = target
+                }
+                this.data.ddictSrc = this.select.srcs[this.data.src]
+                this.data.ddictTarget = this.select.targets[this.data.target]
+
+                // tts src
+                // this.tts_src = data.sentences
+                //     .map(sentence => sentence.orig)
+                //     .join('')
+                // tts target
+                // this.tts_target = data.sentences
+                //     .map(sentence => sentence.trans)
+                //     .join('')
+
+                this.tts = {
+                    src: sample_tts_url,
+                    target: sample_tts_url,
+                }
+            }, 500)
+        },
+        srctarget(select) {
+            console.log('srctarget:', select)
+            this.select = select
+        },
+    },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
