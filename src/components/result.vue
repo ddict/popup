@@ -49,6 +49,8 @@ export default {
         return {
             player: new Audio(),
             playing: false,
+
+            ttsIndex: 0,
         }
     },
     computed: {
@@ -65,12 +67,9 @@ export default {
             textarea.init(this.$refs.input)
             textarea.autoResize(this.$refs.input)
         },
-        tts(url) {
-            if (!url) {
-                return
-            }
-
-            this.player.src = url
+        tts() {
+            // new data -> reset index
+            this.ttsIndex = 0
         },
     },
     mounted() {
@@ -79,7 +78,16 @@ export default {
 
         // player on ended event
         this.player.addEventListener('ended', () => {
-            this.playing = false
+            this.ttsIndex++
+
+            // all played
+            if (this.ttsIndex >= this.tts.target.length) {
+                this.stop()
+                return
+            }
+
+            // play next
+            this.play()
         })
     },
     methods: {
@@ -87,9 +95,9 @@ export default {
             if (!this.tts.target) {
                 return
             }
-            this.player.src = this.tts.target
+            this.player.src = this.tts.target[this.ttsIndex]
 
-            this.player.load()
+            // this.player.load()
             this.playing = true
             this.player.play().catch(() => {
                 this.playing = false
@@ -97,6 +105,7 @@ export default {
         },
         stop() {
             this.playing = false
+            this.ttsIndex = 0
             this.player.pause()
         },
     },

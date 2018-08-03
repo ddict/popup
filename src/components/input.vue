@@ -68,11 +68,17 @@ export default {
 
             player: new Audio(),
             playing: false,
+
+            ttsIndex: 0,
         }
     },
     watch: {
         replace(new_input) {
             this.input = new_input
+        },
+        tts() {
+            // new data -> reset index
+            this.ttsIndex = 0
         },
     },
     mounted() {
@@ -81,7 +87,16 @@ export default {
 
         // player on ended event
         this.player.addEventListener('ended', () => {
-            this.playing = false
+            this.ttsIndex++
+
+            // all played
+            if (this.ttsIndex >= this.tts.src.length) {
+                this.stop()
+                return
+            }
+
+            // play next
+            this.play()
         })
 
         // textarea on change event
@@ -98,9 +113,9 @@ export default {
             if (!this.tts.src) {
                 return
             }
-            this.player.src = this.tts.src
+            this.player.src = this.tts.src[this.ttsIndex]
 
-            this.player.load()
+            // this.player.load()
             this.playing = true
             this.player.play().catch(() => {
                 this.playing = false
@@ -108,6 +123,7 @@ export default {
         },
         stop() {
             this.playing = false
+            this.ttsIndex = 0
             this.player.pause()
         },
         clear() {

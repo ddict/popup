@@ -60,18 +60,10 @@ export default {
                 this.data.ddictSrc = this.select.srcs[this.data.src]
                 this.data.ddictTarget = this.select.targets[this.data.target]
 
-                // tts src
-                // this.tts_src = data.sentences
-                //     .map(sentence => sentence.orig)
-                //     .join('')
-                // tts target
-                // this.tts_target = data.sentences
-                //     .map(sentence => sentence.trans)
-                //     .join('')
-
+                // generate tts urls
                 this.tts = {
-                    src: sample_tts_url,
-                    target: sample_tts_url,
+                    src: [sample_tts_url],
+                    target: [sample_tts_url, sample_tts_url, sample_tts_url],
                 }
             }, 500)
         },
