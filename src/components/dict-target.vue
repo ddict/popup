@@ -13,7 +13,7 @@
                 <div v-for="(entry, index) in dict.entry"
                      :key="`${entry.word}-${index}`">
 
-                    <span class="badge badge-primary clickable-badge"
+                    <span class="badge badge-primary"
                           @click="$emit('translate', entry.word)">
                         {{ entry.word }}
                     </span>
