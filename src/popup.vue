@@ -126,6 +126,15 @@ export default {
         },
         srctarget(select) {
             this.$emit('srctarget', select)
+
+            // translate when src or target change
+            if (this.data) {
+                const input = this.data.sentences
+                    .map(sentence => sentence.orig)
+                    .join('')
+
+                this.$emit('translate', input)
+            }
         },
     },
 }
