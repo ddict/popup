@@ -6,6 +6,7 @@
 npm build
 npm pack
 # mv pack file to repo which depends on this popup
+# they need to install bootstrap-vue and frontawesome too
 ```
 
 ## Project setup

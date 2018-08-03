@@ -1,9 +1,9 @@
 <template>
-  <app-popup :export_data="data"
-             :export_select="select"
-             :export_tts="tts"
-             @srctarget="srctarget"
-             @translate="translate" />
+    <app-popup :export_data="data"
+               :export_select="select"
+               :export_tts="tts"
+               @srctarget="srctarget"
+               @translate="translate" />
 </template>
 
 <script>
@@ -40,6 +40,10 @@ export default {
     },
     methods: {
         translate(input) {
+            if (!input) {
+                return
+            }
+
             console.log('translate:', input)
 
             // cache target
