@@ -1,46 +1,43 @@
 <template>
-    <div class="col-sm-6">
-        <div>
-            <small>
-                &nbsp;
+    <div class="col-sm-6 section">
+        <small v-if="data"
+               class="textarea-src-target-header">
 
-                <span v-if="data">
-                    <font-awesome-icon v-if="!playing"
-                                       icon="volume-up"
-                                       @click="play" />
+            <font-awesome-icon v-if="!playing"
+                               icon="volume-up"
+                               @click="play" />
 
-                    <font-awesome-icon v-if="playing"
-                                       icon="stop-circle"
-                                       @click="stop" />
+            <font-awesome-icon v-if="playing"
+                               icon="stop-circle"
+                               @click="stop" />
 
-                    <span v-if="data.ddictSrc"
-                          class="text-muted">
-                        {{ data.ddictSrc }} ―
-                    </span>
-
-                    <span v-for="(sentence, index) in data.sentences"
-                          :key="`${sentence.src_translit}-${index}`"
-                          class="text-muted">
-                        {{ sentence.src_translit }}
-                    </span>
-                </span>
-            </small>
-
-            <span v-if="input != ''"
-                  id="clear"
-                  @click="clear">
-                <font-awesome-icon icon="times-circle" />
+            <span v-if="data.ddictSrc"
+                  class="text-muted">
+                {{ data.ddictSrc }} ―
             </span>
 
-            <textarea ref="input"
-                      v-model.trim="input"
-                      class="form-control"
-                      autofocus />
+            <span v-for="(sentence, index) in data.sentences"
+                  :key="`${sentence.src_translit}-${index}`"
+                  class="text-muted">
+                {{ sentence.src_translit }}
+            </span>
 
-            <p class="text-right text-muted textarea-footer">
-                <small v-if="input != ''">{{ input.length }} / {{ INPUT_MAX_LENGTH }}</small>
-            </p>
-        </div>
+        </small>
+
+        <span v-if="input != ''"
+              id="clear"
+              @click="clear">
+            <font-awesome-icon icon="times-circle" />
+        </span>
+
+        <textarea ref="input"
+                  v-model.trim="input"
+                  class="form-control textarea-src-target"
+                  autofocus />
+
+        <p class="text-right text-muted textarea-footer">
+            <small v-if="input != ''">{{ input.length }} / {{ INPUT_MAX_LENGTH }}</small>
+        </p>
     </div>
 </template>
 
@@ -129,11 +126,3 @@ export default {
     },
 }
 </script>
-
-<style>
-#clear {
-    position: absolute;
-    top: 1.6rem;
-    right: 1.2rem;
-}
-</style>

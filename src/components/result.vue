@@ -1,27 +1,26 @@
 <template>
-    <div class="col-sm-6">
-        <small>
-            &nbsp;
+    <div class="col-sm-6 section">
+        <small v-if="data"
+               class="textarea-src-target-header">
 
-            <span v-if="data">
-                <font-awesome-icon v-if="!playing"
-                                   icon="volume-up"
-                                   @click="play" />
+            <font-awesome-icon v-if="!playing"
+                               icon="volume-up"
+                               @click="play" />
 
-                <font-awesome-icon v-if="playing"
-                                   icon="stop-circle"
-                                   @click="stop" />
+            <font-awesome-icon v-if="playing"
+                               icon="stop-circle"
+                               @click="stop" />
 
-                <span v-if="data.ddictTarget"
-                      class="text-muted">
-                    {{ data.ddictTarget }}
-                </span>
+            <span v-if="data.ddictTarget"
+                  class="text-muted">
+                {{ data.ddictTarget }}
             </span>
+
         </small>
 
         <textarea ref="input"
                   v-model="trans"
-                  class="form-control"
+                  class="form-control textarea-src-target"
                   readonly
                   spellcheck="false" />
 

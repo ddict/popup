@@ -147,4 +147,20 @@ export default {
 .clickable-badge {
     margin-right: 0.2rem;
 }
+
+.textarea-src-target {
+    padding-top: 1.6rem;
+}
+
+.textarea-src-target-header {
+    position: absolute;
+    top: 0.4rem;
+    left: 1.5rem;
+}
+
+#clear {
+    position: absolute;
+    top: 0.1rem;
+    right: 1.2rem;
+}
 </style>
