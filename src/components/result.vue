@@ -19,7 +19,6 @@
         </small>
 
         <textarea ref="input"
-                  v-model="trans"
                   class="form-control textarea-src-target"
                   readonly
                   spellcheck="false" />
@@ -53,18 +52,17 @@ export default {
             ttsIndex: 0,
         }
     },
-    computed: {
-        trans() {
-            if (!this.data) {
-                return ''
+    watch: {
+        data(data) {
+            if (!data) {
+                this.$refs.input.value = ''
+                textarea.init(this.$refs.input)
+                return
             }
 
-            return this.data.sentences.map(sentence => sentence.trans).join('')
-        },
-    },
-    watch: {
-        data() {
-            textarea.init(this.$refs.input)
+            this.$refs.input.value = data.sentences
+                .map(sentence => sentence.trans)
+                .join('')
             textarea.autoResize(this.$refs.input)
         },
         tts() {
