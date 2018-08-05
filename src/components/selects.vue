@@ -87,7 +87,6 @@ export default {
             this.srctarget()
         },
         srctarget() {
-            console.log('srctarget', this.src, this.target)
             const select = JSON.parse(JSON.stringify(this.select))
             select.src = this.src
             select.target = this.target

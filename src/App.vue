@@ -44,7 +44,7 @@ export default {
                 return
             }
 
-            console.log('translate:', input)
+            // console.log('translate:', input)
 
             // cache target
             const target = this.select.target
@@ -69,10 +69,10 @@ export default {
                     src: [sample_tts_url],
                     target: [sample_tts_url, sample_tts_url, sample_tts_url],
                 }
-            }, 500)
+            }, 50)
         },
         srctarget(select) {
-            console.log('srctarget:', select)
+            // console.log('srctarget:', select)
             this.select = select
         },
     },
