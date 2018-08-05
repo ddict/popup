@@ -139,6 +139,11 @@ export default {
             this.$refs.input.focus()
         },
         translate() {
+            if (!this.input) {
+                this.clear()
+                return
+            }
+
             // emit parent translate
             this.$emit('translate', this.input)
         },
