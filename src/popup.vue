@@ -106,10 +106,13 @@ export default {
                 ) {
                     return
                 }
+
                 const select = JSON.parse(JSON.stringify(this.select))
                 select.src = this.data.target
                 select.target = this.data.src
-                this.srctarget(select)
+
+                // set global select
+                this.$emit('srctarget', select)
             }
 
             // scroll top
