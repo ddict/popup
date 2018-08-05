@@ -13,13 +13,16 @@
 
             <span v-if="data.ddictSrc"
                   class="text-muted">
-                {{ data.ddictSrc }} ―
+                {{ data.ddictSrc }}
             </span>
 
             <span v-for="(sentence, index) in data.sentences"
                   :key="`${sentence.src_translit}-${index}`"
                   class="text-muted">
-                {{ sentence.src_translit }}
+
+                <span v-if="sentence.src_translit">
+                    ― {{ sentence.src_translit }}
+                </span>
             </span>
 
         </small>
