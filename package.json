@@ -1,7 +1,6 @@
 {
   "name": "@ddict/popup",
   "version": "0.1.0",
-  "private": true,
   "main": "dist/popup.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
