@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --inline-vue --name popup src/components/index.js"
+    "build": "vue-cli-service build --target lib --name popup src/components/index.js"
   },
   "files": [
     "dist/*",
