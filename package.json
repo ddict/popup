@@ -1,7 +1,7 @@
 {
   "name": "@ddict/popup",
-  "version": "0.1.2",
-  "main": "dist/popup.common.js",
+  "version": "0.1.3",
+  "main": "dist/popup.umd.min.js",
   "license": "UNLICENSED",
   "scripts": {
     "serve": "vue-cli-service serve",
