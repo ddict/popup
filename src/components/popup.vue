@@ -37,14 +37,17 @@
 </template>
 
 <script>
-import selects from './components/selects.vue'
-import input from './components/input.vue'
-import result from './components/result.vue'
-import dictSrc from './components/dict-src.vue'
-import dictTarget from './components/dict-target.vue'
-import example from './components/example.vue'
-import syno from './components/syno.vue'
-import more from './components/more.vue'
+import '../plugins/bootstrap-vue'
+import '../plugins/fontawesome'
+
+import selects from './selects.vue'
+import input from './input.vue'
+import result from './result.vue'
+import dictSrc from './dict-src.vue'
+import dictTarget from './dict-target.vue'
+import example from './example.vue'
+import syno from './syno.vue'
+import more from './more.vue'
 
 export default {
     name: 'Popup',

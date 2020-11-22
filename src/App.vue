@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import popup from './popup.vue'
+import popup from './components/popup.vue'
 
 // testing purpose
 import sample_data from './sample/sample_data'
