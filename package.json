@@ -1,11 +1,11 @@
 {
   "name": "@ddict/popup",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/popup.common.js",
   "license": "UNLICENSED",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name popup src/components/index.js"
+    "build": "vue-cli-service build --target lib --inline-vue --name popup src/components/index.js"
   },
   "files": [
     "dist/*",
