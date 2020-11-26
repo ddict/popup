@@ -37,9 +37,6 @@
 </template>
 
 <script>
-import '../plugins/bootstrap-vue'
-import '../plugins/fontawesome'
-
 import selects from './selects.vue'
 import input from './input.vue'
 import result from './result.vue'
