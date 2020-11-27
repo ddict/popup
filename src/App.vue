@@ -71,8 +71,12 @@ export default {
             }, 50)
         },
         srctarget(select) {
-            // console.log('srctarget:', select)
             this.select = select
+
+            // if select change => translate
+            const text = document.getElementById('input').value
+            if (text.trim().length === 0) return
+            this.translate(text)
         },
     },
 }

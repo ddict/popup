@@ -28,7 +28,8 @@
             ❌
         </span>
 
-        <textarea ref="input"
+        <textarea id="input"
+                  ref="input"
                   v-model.trim="input"
                   class="form-control textarea-src-target"
                   :style="{ 'text-align': rtl ? 'right' : 'left' }"
