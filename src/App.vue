@@ -43,7 +43,7 @@ export default {
             if (!input) {
                 return
             }
-
+            
             // cache target
             const target = this.select.target
 
@@ -72,11 +72,6 @@ export default {
         },
         srctarget(select) {
             this.select = select
-
-            // if select change => translate
-            const text = document.getElementById('input').value
-            if (text.trim().length === 0) return
-            this.translate(text)
         },
     },
 }
