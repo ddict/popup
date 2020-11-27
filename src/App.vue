@@ -44,8 +44,6 @@ export default {
                 return
             }
 
-            // console.log('translate:', input)
-
             // cache target
             const target = this.select.target
 
@@ -53,6 +51,7 @@ export default {
             setTimeout(() => {
                 // translate
                 this.data = JSON.parse(JSON.stringify(sample_data))
+                this.data.text = 'hello'
 
                 // set data src and target
                 if (!this.data.hasOwnProperty('src')) {

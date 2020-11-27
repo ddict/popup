@@ -85,6 +85,15 @@ export default {
         },
     },
     watch: {
+        data(data) {
+            if (!data || !data.text) {
+                this.input = ''
+                return
+            }
+
+            this.input = data.text
+            this.$refs.input.select()
+        },
         replace(new_input) {
             this.input = new_input
         },
