@@ -36,6 +36,7 @@
         <textarea ref="input"
                   v-model.trim="input"
                   class="form-control textarea-src-target"
+                  :style="{ 'text-align': rtl ? 'right' : 'left' }"
                   autofocus />
 
         <p class="text-right text-muted textarea-footer">
@@ -47,6 +48,8 @@
 <script>
 import config from '../config'
 import textarea from '../core/textarea'
+
+const helper = require('../helper')
 
 export default {
     props: {
@@ -74,6 +77,12 @@ export default {
 
             ttsIndex: 0,
         }
+    },
+    computed: {
+        rtl() {
+            if (!this.data) return false
+            return helper.isRTL(this.data.src)
+        },
     },
     watch: {
         replace(new_input) {

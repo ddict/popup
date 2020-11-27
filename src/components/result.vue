@@ -20,6 +20,7 @@
 
         <textarea ref="input"
                   class="form-control textarea-src-target"
+                  :style="{ 'text-align': rtl ? 'right' : 'left' }"
                   readonly
                   spellcheck="false" />
 
@@ -32,6 +33,8 @@
 
 <script>
 import textarea from '../core/textarea'
+
+const helper = require('../helper')
 
 export default {
     props: {
@@ -51,6 +54,12 @@ export default {
 
             ttsIndex: 0,
         }
+    },
+    computed: {
+        rtl() {
+            if (!this.data) return false
+            return helper.isRTL(this.data.target)
+        },
     },
     watch: {
         data(data) {

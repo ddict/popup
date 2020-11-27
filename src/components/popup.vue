@@ -15,7 +15,7 @@
                         :tts="tts" />
         </div>
 
-        <div class="card-columns">
+        <div class="card-columns" :style="{ 'text-align': rtl ? 'right' : 'left' }">
             <app-dict-target :data="data"
                              @translate="translate(arguments[0], true, true)" />
 
@@ -45,6 +45,8 @@ import dictTarget from './dict-target.vue'
 import example from './example.vue'
 import syno from './syno.vue'
 import more from './more.vue'
+
+const helper = require('../helper')
 
 export default {
     name: 'Popup',
@@ -79,6 +81,12 @@ export default {
             tts: null,
             replace: '',
         }
+    },
+    computed: {
+        rtl() {
+            if (!this.data) return false
+            return helper.isRTL(this.data.target)
+        },
     },
     watch: {
         export_data(data) {
