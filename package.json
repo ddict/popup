@@ -1,6 +1,6 @@
 {
   "name": "@ddict/popup",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "dist/popup.umd.min.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -18,9 +18,6 @@
     "vue": "^2.5.16"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/vue-fontawesome": "^2.0.0",
     "bootstrap-vue": "^2.19.0",
     "@babel/polyfill": "^7.0.0-beta.53",
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",

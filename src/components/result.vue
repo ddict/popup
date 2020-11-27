@@ -3,13 +3,8 @@
         <small v-if="data"
                class="textarea-src-target-header">
 
-            <font-awesome-icon v-if="!playing"
-                               icon="volume-up"
-                               @click="play" />
-
-            <font-awesome-icon v-if="playing"
-                               icon="stop-circle"
-                               @click="stop" />
+            <span v-if="!playing" @click="play">🗣️</span>
+            <span v-if="playing" @click="stop">⏹️</span>
 
             <span v-if="data.ddictTarget"
                   class="text-muted">

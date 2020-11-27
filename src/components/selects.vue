@@ -19,7 +19,7 @@
             <span id="swap"
                   class="form-control bg-light"
                   @click="swap">
-                <font-awesome-icon icon="exchange-alt" />
+                🔁
             </span>
         </div>
 
