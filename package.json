@@ -1,19 +1,14 @@
 {
   "name": "@ddict/popup",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist/popup.umd.min.js",
   "license": "UNLICENSED",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name popup src/components/index.js"
+    "build":
+      "vue-cli-service build --target lib --name popup src/components/index.js"
   },
-  "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    "*.js"
-  ],
+  "files": ["dist/*", "src/*", "public/*", "*.json", "*.js"],
   "dependencies": {
     "vue": "^2.5.16"
   },
@@ -30,9 +25,5 @@
       "autoprefixer": {}
     }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
