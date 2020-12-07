@@ -35,36 +35,40 @@
                   :style="{ 'text-align': rtl ? 'right' : 'left' }"
                   autofocus />
 
-        <p class="text-right text-muted textarea-footer">
-            <small v-if="input != ''">{{ input.length }} / {{ INPUT_MAX_LENGTH }}</small>
+        <p class="text-muted textarea-footer">
+            <input id="auto_translate" v-model="auto_translate" type="checkbox"> 
+            <label for="auto_translate">Auto translate</label>
+            <small class="float-right" v-if="input != ''">{{ input.length }} / {{ INPUT_MAX_LENGTH }}</small>
         </p>
     </div>
 </template>
 
 <script>
-import config from '../config'
-import textarea from '../core/textarea'
+import config from "../config";
+import textarea from "../core/textarea";
 
-const helper = require('../helper')
+const helper = require("../helper");
+
+const LABEL_AUTO_TRANSLATE = "auto_translate";
 
 export default {
     props: {
         data: {
             type: Object,
-            default: null,
+            default: null
         },
         tts: {
             type: Object,
-            default: null,
+            default: null
         },
         replace: {
             type: String,
-            default: '',
-        },
+            default: ""
+        }
     },
     data() {
         return {
-            input: '',
+            input: "",
             INPUT_MAX_LENGTH: config.INPUT_MAX_LENGTH,
             input_timeout: null,
 
@@ -72,95 +76,117 @@ export default {
             playing: false,
 
             ttsIndex: 0,
-        }
+
+            auto_translate: false
+        };
     },
     computed: {
         rtl() {
-            if (!this.data) return false
-            return helper.isRTL(this.data.src)
-        },
+            if (!this.data) return false;
+            return helper.isRTL(this.data.src);
+        }
     },
     watch: {
         data(data) {
             if (!data || !data.text) {
-                this.input = ''
-                return
+                this.input = "";
+                return;
             }
 
-            this.input = data.text
-            this.$refs.input.select()
+            this.input = data.text;
+            this.$refs.input.select();
         },
         replace(new_input) {
-            this.input = new_input
+            this.input = new_input;
         },
         tts() {
             // new data -> reset index
-            this.ttsIndex = 0
+            this.ttsIndex = 0;
         },
+        auto_translate() {
+            localStorage.setItem(LABEL_AUTO_TRANSLATE, this.auto_translate);
+        }
     },
     mounted() {
         // textarea
-        textarea.init(this.$refs.input, config.INPUT_MAX_LENGTH)
+        textarea.init(this.$refs.input, config.INPUT_MAX_LENGTH);
 
         // player on ended event
-        this.player.addEventListener('ended', () => {
-            this.ttsIndex++
+        this.player.addEventListener("ended", () => {
+            this.ttsIndex++;
 
             // all played
             if (this.ttsIndex >= this.tts.src.length) {
-                this.stop()
-                return
+                this.stop();
+                return;
             }
 
             // play next
-            this.play()
-        })
+            this.play();
+        });
 
         // textarea on change event
-        this.$refs.input.addEventListener('input', () => {
-            textarea.autoResize(this.$refs.input)
+        this.$refs.input.addEventListener("input", () => {
+            textarea.autoResize(this.$refs.input);
+
+            // auto translate on/off
+            if (!this.auto_translate) return;
 
             // delay
-            clearTimeout(this.input_timeout)
-            this.input_timeout = setTimeout(this.translate, config.INPUT_DELAY)
-        })
+            clearTimeout(this.input_timeout);
+            this.input_timeout = setTimeout(this.translate, config.INPUT_DELAY);
+        });
+
+        // translate when hit enter
+        this.$refs.input.addEventListener("keyup", e => {
+            // auto translate on/off
+            if (this.auto_translate) return;
+
+            // enter
+            if (e && e.keyCode === 13) this.translate();
+        });
+    },
+    created() {
+        // load auto translate setting
+        const auto_translate = localStorage.getItem(LABEL_AUTO_TRANSLATE);
+        if (auto_translate === "true") this.auto_translate = true;
     },
     methods: {
         play() {
             if (!this.tts.src) {
-                return
+                return;
             }
-            this.player.src = this.tts.src[this.ttsIndex]
+            this.player.src = this.tts.src[this.ttsIndex];
 
             // this.player.load()
-            this.playing = true
+            this.playing = true;
             this.player.play().catch(() => {
-                this.playing = false
-            })
+                this.playing = false;
+            });
         },
         stop() {
-            this.playing = false
-            this.ttsIndex = 0
-            this.player.pause()
+            this.playing = false;
+            this.ttsIndex = 0;
+            this.player.pause();
         },
         clear() {
             // emit parent clear
-            this.$emit('clear')
+            this.$emit("clear");
 
-            this.input = ''
-            textarea.init(this.$refs.input, config.INPUT_MAX_LENGTH)
+            this.input = "";
+            textarea.init(this.$refs.input, config.INPUT_MAX_LENGTH);
 
-            this.$refs.input.focus()
+            this.$refs.input.focus();
         },
         translate() {
             if (!this.input) {
-                this.clear()
-                return
+                this.clear();
+                return;
             }
 
             // emit parent translate
-            this.$emit('translate', this.input)
-        },
-    },
-}
+            this.$emit("translate", this.input);
+        }
+    }
+};
 </script>
