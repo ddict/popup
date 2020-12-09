@@ -20,7 +20,7 @@
                   spellcheck="false" />
 
         <p v-if="data"
-           class="text-right text-muted textarea-footer">
+           class="small text-right text-muted textarea-footer">
             <small>Powered by Google Translate</small>
         </p>
     </div>

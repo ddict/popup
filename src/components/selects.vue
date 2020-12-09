@@ -4,7 +4,7 @@
 
         <div class="col">
             <select v-model="src"
-                    :class="{'form-control': true, 'border-danger': warning}"
+                    :class="{'form-control': true, 'form-control-sm': true, 'border-danger': warning}"
                     @change="srctarget">
 
                 <option v-for="(value, key) in select.srcs"
@@ -25,7 +25,7 @@
 
         <div class="col">
             <select v-model="target"
-                    :class="{'form-control': true, 'border-danger': warning}"
+                    :class="{'form-control': true, 'form-control-sm': true, 'border-danger': warning}"
                     @change="srctarget">
 
                 <option v-for="(value, key) in select.targets"

@@ -36,7 +36,7 @@
                   :style="{ 'text-align': rtl ? 'right' : 'left' }"
                   autofocus />
 
-        <p class="form-check text-muted textarea-footer">
+        <p class="small form-check text-muted textarea-footer">
             <input id="auto_translate" class="form-check-input" v-model="auto_translate" type="checkbox"> 
             <label for="auto_translate" class="form-check-label">Auto translate</label>
             <small class="float-right" v-if="input != ''">{{ input.length }} / {{ INPUT_MAX_LENGTH }}</small>
