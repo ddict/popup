@@ -141,7 +141,7 @@ export default {
     created() {
         // set history
         if (this.data && this.data.text) {
-            this.input = data.text;
+            this.input = this.data.text;
             this.$refs.input.select();
         }
 
