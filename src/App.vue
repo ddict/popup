@@ -36,6 +36,23 @@ export default {
                 srcs: sample_languages.sl,
                 targets: sample_languages.tl,
             }
+
+            // cache target
+            const target = this.select.target
+
+                this.data = JSON.parse(JSON.stringify(sample_data))
+                this.data.text = 'hello'
+
+                // set data src and target
+                if (!this.data.hasOwnProperty('src')) {
+                    this.data.src = this.select.src
+                }
+                if (!this.data.hasOwnProperty('target')) {
+                    this.data.target = target
+                }
+                this.data.ddictSrc = this.select.srcs[this.data.src]
+                this.data.ddictTarget = this.select.targets[this.data.target]
+
         }, 500)
     },
     methods: {

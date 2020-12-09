@@ -91,6 +91,9 @@ export default {
     watch: {
         export_data(data) {
             this.data = data
+
+            if (data.text && this.replace != data.text)
+                this.replace = data.text
         },
         export_select(select) {
             this.select = select

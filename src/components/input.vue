@@ -24,7 +24,7 @@
 
         <span v-if="input != ''"
               id="clear"
-              class="pointer"
+              class="small pointer"
               @click="clear">
             ❌
         </span>
@@ -139,12 +139,6 @@ export default {
         });
     },
     created() {
-        // set history
-        if (this.data && this.data.text) {
-            this.input = this.data.text;
-            this.$refs.input.select();
-        }
-
         // load auto translate setting
         const auto_translate = localStorage.getItem(LABEL_AUTO_TRANSLATE);
         if (auto_translate === "true") this.auto_translate = true;
