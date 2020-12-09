@@ -87,15 +87,6 @@ export default {
         }
     },
     watch: {
-        data(data) {
-            if (!data || !data.text) {
-                this.input = "";
-                return;
-            }
-
-            this.input = data.text;
-            this.$refs.input.select();
-        },
         replace(new_input) {
             this.input = new_input;
         },
@@ -147,6 +138,12 @@ export default {
         });
     },
     created() {
+        // set history
+        if (this.data && this.data.text) {
+            this.input = data.text;
+            this.$refs.input.select();
+        }
+
         // load auto translate setting
         const auto_translate = localStorage.getItem(LABEL_AUTO_TRANSLATE);
         if (auto_translate === "true") this.auto_translate = true;
