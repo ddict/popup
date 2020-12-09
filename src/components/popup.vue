@@ -183,4 +183,7 @@ export default {
     top: 0.1rem;
     right: 1.2rem;
 }
+.pointer {
+    cursor: pointer;
+}
 </style>

@@ -17,7 +17,7 @@
 
         <div>
             <span id="swap"
-                  class="form-control bg-light"
+                  class="form-control bg-light pointer"
                   @click="swap">
                 🔁
             </span>
