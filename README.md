@@ -27,6 +27,14 @@ npm run serve
 npm run build
 ```
 
+### publish
+
+```
+npm login --registry=https://npm.pkg.github.com --scope=@ddict
+username: ddo
+password: <github token with repo and read:packages permissions>
+```
+
 ### Lints and fixes files
 
 ```
