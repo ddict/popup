@@ -90,6 +90,10 @@ export default {
     watch: {
         replace(new_input) {
             this.input = new_input;
+
+            setTimeout(() => {
+                this.$refs.input.select()
+            }, 100)
         },
         tts() {
             // new data -> reset index

@@ -1,6 +1,6 @@
 {
   "name": "@ddict/popup",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "main": "dist/popup.umd.min.js",
   "license": "UNLICENSED",
   "scripts": {
