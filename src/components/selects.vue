@@ -19,7 +19,7 @@
             <span id="swap"
                   class="form-control bg-light pointer"
                   @click="swap">
-                🔁
+                <b-icon-arrow-left-right></b-icon-arrow-left-right>
             </span>
         </div>
 

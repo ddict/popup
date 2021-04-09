@@ -3,8 +3,12 @@
         <small v-if="data"
                class="textarea-src-target-header">
 
-            <span class="pointer" v-if="!playing" @click="play">🗣️</span>
-            <span class="pointer" v-if="playing" @click="stop">⏹️</span>
+            <span class="pointer" v-if="!playing" @click="play">
+                <b-icon-volume-up></b-icon-volume-up>
+            </span>
+            <span class="pointer" v-if="playing" @click="stop">
+                <b-icon-stop-circle></b-icon-stop-circle>
+            </span>
 
             <span v-if="data.ddictSrc"
                   class="text-muted">
@@ -26,7 +30,7 @@
               id="clear"
               class="small pointer"
               @click="clear">
-            ❌
+                <b-icon-x-circle></b-icon-x-circle>
         </span>
 
         <textarea id="input"

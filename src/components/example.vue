@@ -4,8 +4,12 @@
         <div class="card-header">
             {{ name }}
 
-            <span v-if="data.examples.example.length > 1 && !more" style="float: right" @click="more = true">➕</span>
-            <span v-if="data.examples.example.length > 1 && more" style="float: right" @click="more = false">➖</span>
+            <span v-if="data.examples.example.length > 1 && !more" style="float: right" @click="more = true">
+                <b-icon-arrows-expand></b-icon-arrows-expand>
+            </span>
+            <span v-if="data.examples.example.length > 1 && more" style="float: right" @click="more = false">
+                <b-icon-arrows-collapse></b-icon-arrows-collapse>
+            </span>
         </div>
 
         <ul class="list-group list-group-flush">
