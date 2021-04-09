@@ -7,7 +7,7 @@
                 <b-icon-volume-up></b-icon-volume-up>
             </span>
             <span class="pointer" v-if="playing" @click="stop">
-                <b-icon-stop-circle></b-icon-stop-circle>
+                <b-icon-volume-off></b-icon-volume-off>
             </span>
 
             <span v-if="data.ddictSrc"

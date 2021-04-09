@@ -6,7 +6,7 @@ import {
   BIconArrowLeftRight,
   BIconXCircle,
   BIconVolumeUp,
-  BIconStopCircle,
+  BIconVolumeOff,
   BIconArrowsExpand,
   BIconArrowsCollapse,
 } from 'bootstrap-vue';
@@ -18,6 +18,6 @@ Vue.component('BIcon', BIcon);
 Vue.component('BIconArrowLeftRight', BIconArrowLeftRight);
 Vue.component('BIconXCircle', BIconXCircle);
 Vue.component('BIconVolumeUp', BIconVolumeUp);
-Vue.component('BIconStopCircle', BIconStopCircle);
+Vue.component('BIconVolumeOff', BIconVolumeOff);
 Vue.component('BIconArrowsExpand', BIconArrowsExpand);
 Vue.component('BIconArrowsCollapse', BIconArrowsCollapse);
