@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-6 section">
         <small v-if="data"
-               class="textarea-src-target-header">
+               class="textarea-src-target-header truncate">
 
             <span class="pointer" v-if="!playing" @click="play">
                 <b-icon-volume-up></b-icon-volume-up>
@@ -190,3 +190,12 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.truncate {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
